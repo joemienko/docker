@@ -1,0 +1,124 @@
+{
+  "logger": {
+    "level": "info",
+    "timestamp": false
+  },
+  "esclient": {
+    "apiVersion": "7.5",
+    "hosts": [
+      { "host": "elasticsearch" }
+    ]
+  },
+  "elasticsearch": {
+    "settings": {
+      "index": {
+        "refresh_interval": "10s",
+        "number_of_replicas": "0",
+        "number_of_shards": "1"
+      }
+    }
+  },
+  "acceptance-tests": {
+    "endpoints": {
+      "docker": "http://api:4000/v1/"
+    }
+  },
+  "api": {
+    "services": {
+      "placeholder": { "url": "http://placeholder:4100" },
+      "pip": { "url": "http://pip:4200" },
+      "interpolation": { "url": "http://interpolation:4300" },
+      "libpostal": { "url": "http://libpostal:4400" }
+    }
+  },
+  "imports": {
+    "adminLookup": {
+      "enabled": true
+    },
+    "blacklist": {
+      "files": [
+        "/data/blacklist/osm.txt"
+      ]
+    },
+    "geonames": {
+      "datapath": "/data/geonames",
+      "countryCode": "US"
+    },
+    "openstreetmap": {
+      "download": [
+        { "sourceURL": "http://download.geofabrik.de/north-america/us/washington-latest.osm.pbf" }
+      ],
+      "leveldbpath": "/tmp",
+      "datapath": "/data/openstreetmap",
+      "import": [{
+        "filename": "washington-latest.osm.pbf"
+      }]
+    },
+    "openaddresses": {
+      "datapath": "/data/openaddresses",
+      "files": [
+        "us/wa/asotin.csv",
+        "us/wa/bellingham.csv",
+        "us/wa/benton.csv",
+        "us/wa/chelan.csv",
+        "us/wa/city_of_bellevue.csv",
+        "us/wa/city_of_richland.csv",
+        "us/wa/city_of_spokane.csv",
+        "us/wa/city_of_tacoma.csv",
+        "us/wa/city_of_yakima.csv",
+        "us/wa/clallam.csv",
+        "us/wa/clark.csv",
+        "us/wa/cowlitz.csv",
+        "us/wa/douglas.csv",
+        "us/wa/ferry.csv",
+        "us/wa/franklin.csv",
+        "us/wa/garfield.csv",
+        "us/wa/grant.csv",
+        "us/wa/island.csv",
+        "us/wa/jefferson.csv",
+        "us/wa/king.csv",
+        "us/wa/kitsap.csv",
+        "us/wa/kittitas.csv",
+        "us/wa/lewis.csv",
+        "us/wa/mason.csv",
+        "us/wa/okanogan.csv",
+        "us/wa/pacific.csv",
+        "us/wa/pend_oreille.csv",
+        "us/wa/pierce.csv",
+        "us/wa/san_juan.csv",
+        "us/wa/skagit.csv",
+        "us/wa/snohomish.csv",
+        "us/wa/snohomish_county.csv",
+        "us/wa/spokane.csv",
+        "us/wa/thurston.csv",
+        "us/wa/walla_walla.csv"
+      ]
+    },
+    "polyline": {
+      "datapath": "/data/polylines",
+      "files": [ "extract.0sv" ]
+    },
+    "whosonfirst": {
+      "datapath": "/data/whosonfirst",
+      "countryCode": "US",
+      "importPlace": [
+        "85688753"
+      ]
+    },
+    "transit": {
+      "datapath": "/data/transit",
+      "feeds": [
+      ]
+    },
+    "interpolation": {
+      "download": {
+        "tiger": {
+          "datapath": "/data/tiger",
+          "states": [
+            { "state_code": 53 }
+          ]
+        }
+      }
+    }
+  }
+}
